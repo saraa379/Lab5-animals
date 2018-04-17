@@ -1,28 +1,57 @@
 <template>
-	<div class="contact">
+	<div id="contact" v-bind:class="colorDiv" v-on:click="changeColor">
 
 			<img class="pic" v-bind:src="url" alt="Animal">
-			<p>{{ title }}</p>
-			<p>{{ year }}</p>
+			<div class="text">
+					<p class="name">{{ title }}</p>
+					<p>{{ desc }}</p>
+			</div>
 	</div>
 </template>
 
 <script>
 	export default {
-		props: ['url', 'title', 'year']
+		props: ['url', 'title', 'desc'],
+		data: function() {
+				return {
+						colorDiv: 'backColorGrey'
+				}
+		},
+		methods: {
+			changeColor: function(event) {
+					this.colorDiv = "backColorChosen";
+					//console.log(this.$vnode.key);
+			}
+		} //methods
 	}
 </script>
 
 <style scoped>
-		.contact {
-			background-color: white;
-			border: 2px solid #E5E5E7;
+		#contact {
+			border: 2px solid #110c11;
 			min-height: 30px;
 			width: 100%;
+			display: flex;
+			flex-flow: row nowrap;
+			color: white;
+		}
+		.backColorGrey {
+				background-color: #585858;
+		}
+		.backColorChosen {
+				background-color: #787878;
 		}
 		img {
 			width: 100px;
-			height: auto;
+			height: 100px;
+			border-right: 2px solid #110c11;
+		}
+		.text {
+			margin-left: 15px;
+		}
+		.name {
+			font-weight: bold;
+			font-size: 1.2rem;
 		}
 
 </style>
