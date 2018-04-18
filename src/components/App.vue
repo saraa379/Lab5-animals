@@ -11,11 +11,21 @@
                 v-bind:title="animal.title"
                 v-bind:desc="animal.desc"
                 v-bind:url="animal.url"
-                v-bind:colorDiv="colorAnimal"
+                v-bind:idComp="animal.id"
+                v-bind:colorDiv="animal.colorAnimal"
+                v-on:send-id="recieveId"
             ></animal-comp>
         </div>
 
-        <div class="chosenProfile"></div>
+        <div class="chosenProfile" v-if="visibleChosen">
+          <chosen-comp
+              v-bind:key="chosenAnimal.id"
+              v-bind:titleCh="chosenAnimal.title"
+              v-bind:descCh="chosenAnimal.desc"
+              v-bind:urlCh="chosenAnimal.url"
+              v-bind:idCh="chosenAnimal.id"
+          ></chosen-comp>
+        </div>
       </main>
   </div><!--end of app-->
 </template>
@@ -33,18 +43,37 @@ import Chosen from './Chosen.vue';
      data: function() {
     		return {
           animals: [
-              { id: 1, title: 'Dog', desc: 'Smart, social and high-energy animal.', url: 'https://pixabay.com/get/e833b60b29f5043ed1534705fb09459fe376e1dc10ac104497f3c87cafecbcb9/dog-1674115_1920.jpg' },
-              { id: 2, title: 'Fish', desc: 'Has calming effect, does not require constant attention.', url: 'https://pixabay.com/get/eb30b90828f1063ed1534705fb09459fe376e1dc10ac104497f3c87fa2edb6bb/fish-2587057_1920.jpg' },
-              { id: 3, title: 'Rodents', desc: 'Active, small and sociable.', url: 'https://pixabay.com/get/ee30b40a2ef61c22d9584518a34f4f96e274ebdc04b0144396f9c778a4e9bd/guinea-pig-755562_1920.jpg' },
-              { id: 4, title: 'Cat', desc: 'Playful, acrobatic and cuddly friends.', url: 'https://pixabay.com/get/ea37b90e2af7033ed1534705fb09459fe376e1dc10ac104497f3c87fa4e8bcbb/cute-3281232_1920.jpg' },
-              { id: 5, title: 'Rabbit', desc: 'Adorable and wonderful indoor pet.', url: 'https://pixabay.com/get/ea34b00e2ef6063ed1534705fb09459fe376e1dc10ac104497f3c87fa3e5b7b9/rabbit-3111627_1920.jpg' }
+              { id: 1, title: 'Dog', desc: 'Smart, social and high-energy animal.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ea36b10a2ef6073ed1534705fb09459fe376e1dc10ac104497f3c870a6eab2b9/cute-3305626_1920.jpg' },
+              { id: 2, title: 'Fish', desc: 'Has calming effect, does not require constant attention.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/eb30b90828f1063ed1534705fb09459fe376e1dc10ac104497f3c870a6e5b7b9/fish-2587057_1920.jpg' },
+              { id: 3, title: 'Rodents', desc: 'Active, small and sociable.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ed3cb90e2df11c22d9584518a34f4f96e274ebdc04b0144396f9c878aeeeb0/gold-agouti-498155_1920.jpg' },
+              { id: 4, title: 'Cat', desc: 'Playful, acrobatic and cuddly friends.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ea35b80a2af5013ed1534705fb09459fe376e1dc10ac104497f3c870a5edb3bd/cat-3095210_1920.jpg' },
+              { id: 5, title: 'Rabbit', desc: 'Adorable and wonderful indoor pet.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ea34b00e2ef6063ed1534705fb09459fe376e1dc10ac104497f3c870a5ecb0ba/rabbit-3111627_1920.jpg' }
           ],
-          colorAnimal: 'backColorGrey'
+          chosenId: 0,
+          visibleChosen: true,
+          visibleEdit: false,
+          chosenAnimal: { id: 1, title: 'Dog', desc: 'Smart, social and high-energy animal.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ea36b10a2ef6073ed1534705fb09459fe376e1dc10ac104497f3c870a6eab2b9/cute-3305626_1920.jpg' }
+
     		};
     	},  // data
     	methods: {
-        makeChosen: function(event) {
-						this.colorAnimal = "backColorChosen";
+        recieveId: function(strId) {
+						this.chosenId = parseInt(strId);
+            //console.log("Id is recieved: " + strId);
+            //console.log("Chosen id: " + this.chosenId);
+            var i;
+            for (i = 0; i < this.animals.length; i++) {
+                if (this.animals[i].id == this.chosenId){
+                    this.animals[i].colorAnimal = "backColorChosen";
+                    this.chosenAnimal.id = this.animals[i].id;
+                    this.chosenAnimal.title = this.animals[i].title;
+                    this.chosenAnimal.desc = this.animals[i].desc;
+                    this.chosenAnimal.url = this.animals[i].url;
+                } else {
+                  this.animals[i].colorAnimal = "backColorGrey";
+                }
+                console.log("Animals id: " + this.animals[i].id);
+            }//end for
 				}
      } //methods
   } //export default
@@ -107,7 +136,6 @@ import Chosen from './Chosen.vue';
         padding-bottom: 40px;
       }
       .contactList, .chosenProfile {
-        background-color: white;
         flex-basis: 49%;
         min-height: 300px;
      }

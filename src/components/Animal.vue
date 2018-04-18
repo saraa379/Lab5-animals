@@ -11,16 +11,16 @@
 
 <script>
 	export default {
-		props: ['url', 'title', 'desc'],
+		props: ['url', 'title', 'desc', 'idComp', 'colorDiv'],
 		data: function() {
 				return {
-						colorDiv: 'backColorGrey'
 				}
 		},
 		methods: {
 			changeColor: function(event) {
-					this.colorDiv = "backColorChosen";
-					//console.log(this.$vnode.key);
+					//this.colorDiv = "backColorChosen";
+					//console.log("Id of the component: " + this.idComp);
+					this.$emit('send-id', this.idComp);
 			}
 		} //methods
 	}
@@ -39,7 +39,7 @@
 				background-color: #585858;
 		}
 		.backColorChosen {
-				background-color: #787878;
+				background-color: #999999;
 		}
 		img {
 			width: 100px;

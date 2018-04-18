@@ -3,38 +3,64 @@
 
 			<img class="pic" v-bind:src="urlCh" alt="Animal">
 			<div class="textChosen">
-					<p class="name">{{ titleCh }}</p>
-					<p>{{ descCh }}</p>
+					<div class="row">
+							<p class="name">{{ titleCh }}</p>
+							<i class="fas fa-cog"></i>
+					</div>
+					<p class="lastP">{{ descCh }}</p>
 			</div>
 	</div>
 </template>
-
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <script>
 	export default {
-		props: ['urlCh', 'titleCh', 'descCh']
+		props: ['urlCh', 'titleCh', 'descCh', 'idCh']
 	}
 </script>
 
 <style scoped>
 		.wrap {
 			background-color: #585858;
-			border: 2px solid #110c11;
 			min-height: 30px;
 			width: 100%;
 			display: flex;
 			flex-flow: column wrap;
+			justify-content: center;
 			color: white;
 		}
 		img {
-			width: 100px;
-			height: 100px;
-			border: 2px solid #110c11;
+			width: 100%;
+			height: auto;
+			border-bottom: 2px solid #110c11;
 		}
 		.textChosen {
+			padding-left: 10px;
+			position: relative;
 		}
 		.name {
 			font-weight: bold;
 			font-size: 1.2rem;
+			display: inline-block;
+			width: 50px;
+		}
+		i {
+			color: white;
+			position: relative;
+			font-size: 25px;
+		}
+		p {
+			margin: 0;
+		}
+		.lastP {
+			margin-top: 5px;
+			margin-bottom: 10px;
+		}
+		.row {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-between;
+			padding-right: 15px;
+			padding-top: 10px;
 		}
 
 </style>
