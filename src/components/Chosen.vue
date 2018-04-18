@@ -41,6 +41,7 @@
 		.textChosen {
 			padding-left: 10px;
 			position: relative;
+			background-color: #999999;
 		}
 		.name {
 			font-weight: bold;

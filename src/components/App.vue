@@ -55,16 +55,16 @@ import EditChosen from './EditChosen.vue';
      data: function() {
     		return {
           animals: [
-              { id: 1, title: 'Dog', desc: 'Smart, social and high-energy animal.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/e834b30c28f5073ed1534705fb09459fe376e1dc10ac104497f4c17ca6e8b6bc/dog-1123016_1920.jpg' },
-              { id: 2, title: 'Fish', desc: 'Has calming effect, does not require constant attention.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/eb3cb30e2cf7013ed1534705fb09459fe376e1dc10ac104497f4c17ca6efbcbd/fish-2921430_1920.jpg' },
-              { id: 3, title: 'Rodents', desc: 'Active, small and sociable.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ec35b10d2df21c22d9584518a34f4f96e274ebdc04b0144391f0c478a0eab2/guinea-pig-500256_1920.jpg' },
-              { id: 4, title: 'Cat', desc: 'Playful, acrobatic and cuddly friends.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/eb33b20c2afc023ed1534705fb09459fe376e1dc10ac104497f4c17ca5ecbdba/kitten-with-mom-2633283_1920.jpg' },
-              { id: 5, title: 'Rabbit', desc: 'Adorable and wonderful indoor pet.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ea34b50720f51c22d2524518a34f4f96e274ebdc04b0144391f0c47ba3ecb6/lop-eared-314881_1280.jpg' }
+              { id: 1, title: 'Dog', desc: 'Smart, social and high-energy animal.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/e832b80f28f0083ed1534705fb09459fe376e1dc10ac104497f4c17ca1efb2b8/beach-1790049_1920.jpg' },
+              { id: 2, title: 'Fish', desc: 'Has calming effect, does not require constant attention.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/eb37b10929f4023ed1534705fb09459fe376e1dc10ac104497f4c17ca1eeb2bf/nose-doctor-fish-2206103_1920.jpg' },
+              { id: 3, title: 'Rodents', desc: 'Active, small and sociable.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/e832b00e2afc093ed1534705fb09459fe376e1dc10ac104497f4c17ca1e8b5b0/guinea-pig-1711288_1920.jpg' },
+              { id: 4, title: 'Cat', desc: 'Playful, acrobatic and cuddly friends.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ea37b7092ef3053ed1534705fb09459fe376e1dc10ac104497f4c17ca1ebbcbf/basketball-3266674_1920.jpg' },
+              { id: 5, title: 'Rabbit', desc: 'Adorable and wonderful indoor pet.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/e834b50628f2013ed1534705fb09459fe376e1dc10ac104497f4c17ca1eabdb0/bunny-1149060_1920.jpg' }
           ],
           chosenId: 0,
           visibleChosen: true,
           visibleEdit: false,
-          chosenAnimal: { id: 1, title: 'Dog', desc: 'Smart, social and high-energy animal.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/e834b30c28f5073ed1534705fb09459fe376e1dc10ac104497f4c17ca6e8b6bc/dog-1123016_1920.jpg' }
+          chosenAnimal: { id: 1, title: 'Dog', desc: 'Smart, social and high-energy animal.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/e832b80f28f0083ed1534705fb09459fe376e1dc10ac104497f4c17ca1efb2b8/beach-1790049_1920.jpg' }
 
     		};
     	},  // data
@@ -159,7 +159,7 @@ import EditChosen from './EditChosen.vue';
      }
      .chosenProfile {
        flex-basis: 49%;
-       background-color: #585858;
+       background-color: #999999;
        border: 2px solid #110c11;
      }
 
