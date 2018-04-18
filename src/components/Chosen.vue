@@ -5,7 +5,7 @@
 			<div class="textChosen">
 					<div class="row">
 							<p class="name">{{ titleCh }}</p>
-							<i class="fas fa-cog"></i>
+							<div v-on:click="editChosen"><i class="fas fa-cog"></i></div>
 					</div>
 					<p class="lastP">{{ descCh }}</p>
 			</div>
@@ -14,7 +14,12 @@
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <script>
 	export default {
-		props: ['urlCh', 'titleCh', 'descCh', 'idCh']
+		props: ['urlCh', 'titleCh', 'descCh', 'idCh'],
+		methods: {
+			editChosen: function(event) {
+					this.$emit('show-edit');
+			}
+		} //methods
 	}
 </script>
 

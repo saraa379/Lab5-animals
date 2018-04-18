@@ -48,10 +48,15 @@
 		}
 		.text {
 			margin-left: 15px;
+			padding-top: 10px;
 		}
 		.name {
 			font-weight: bold;
 			font-size: 1.2rem;
+		}
+		p {
+			margin-top: 5px;
+			margin-bottom: 5px;
 		}
 
 </style>
