@@ -107,6 +107,7 @@ import EditChosen from './EditChosen.vue';
               }
               if (descE != ""){
                 this.chosenAnimal.desc = descE;
+                this.animals[this.chosenAnimal.id-1].desc = descE;
               }
   				    this.visibleChosen = true;
   			}
