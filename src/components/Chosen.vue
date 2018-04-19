@@ -43,6 +43,7 @@
 			position: relative;
 			background-color: #999999;
 			border-left: 1px solid #110c11;
+			border-right: 1px solid #110c11;
 		}
 		.name {
 			font-weight: bold;
