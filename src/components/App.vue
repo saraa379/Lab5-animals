@@ -34,6 +34,8 @@
               v-bind:descE="chosenAnimal.desc"
               v-bind:urlE="chosenAnimal.url"
               v-bind:idE="chosenAnimal.id"
+              v-on:cancel-edit="cancelEditPage"
+              v-on:save-edit="saveEditPage"
           ></edit-comp>
         </div>
       </main>
@@ -55,24 +57,22 @@ import EditChosen from './EditChosen.vue';
      data: function() {
     		return {
           animals: [
-              { id: 1, title: 'Dog', desc: 'Smart, social and high-energy animal.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/e832b80f28f0083ed1534705fb09459fe376e1dc10ac104497f4c17ca1efb2b8/beach-1790049_1920.jpg' },
-              { id: 2, title: 'Fish', desc: 'Has calming effect, does not require constant attention.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/eb37b10929f4023ed1534705fb09459fe376e1dc10ac104497f4c17ca1eeb2bf/nose-doctor-fish-2206103_1920.jpg' },
-              { id: 3, title: 'Rodents', desc: 'Active, small and sociable.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/e832b00e2afc093ed1534705fb09459fe376e1dc10ac104497f4c17ca1e8b5b0/guinea-pig-1711288_1920.jpg' },
-              { id: 4, title: 'Cat', desc: 'Playful, acrobatic and cuddly friends.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ea37b7092ef3053ed1534705fb09459fe376e1dc10ac104497f4c17ca1ebbcbf/basketball-3266674_1920.jpg' },
-              { id: 5, title: 'Rabbit', desc: 'Adorable and wonderful indoor pet.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/e834b50628f2013ed1534705fb09459fe376e1dc10ac104497f4c17ca1eabdb0/bunny-1149060_1920.jpg' }
+              { id: 1, title: 'Dog', desc: 'Smart, social and high-energy animal.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ea36b00920f5093ed1534705fb09459fe376e1dc10ac104497f4c07ba1e4b3b9/dog-3316818_1920.jpg' },
+              { id: 2, title: 'Fish', desc: 'Has calming effect, does not require constant attention.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ea37b00729f6043ed1534705fb09459fe376e1dc10ac104497f4c07ba0edbcb0/fish-3218125_1920.jpg' },
+              { id: 3, title: 'Rodents', desc: 'Active, small and sociable.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/eb31b30a2af41c22d9584518a34f4f96e274ebdc04b0144391f1c37ea6e8b3/guinea-pig-242520_1920.jpg' },
+              { id: 4, title: 'Cat', desc: 'Playful, acrobatic and cuddly friends.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ea36b30629fc013ed1534705fb09459fe376e1dc10ac104497f4c07ba0efb7b9/portrait-3329180_1920.jpg' },
+              { id: 5, title: 'Rabbit', desc: 'Adorable and wonderful indoor pet.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ea37b40829f3073ed1534705fb09459fe376e1dc10ac104497f4c07ba0eeb6b9/easter-3257176_1920.jpg' }
           ],
           chosenId: 0,
           visibleChosen: true,
           visibleEdit: false,
-          chosenAnimal: { id: 1, title: 'Dog', desc: 'Smart, social and high-energy animal.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/e832b80f28f0083ed1534705fb09459fe376e1dc10ac104497f4c17ca1efb2b8/beach-1790049_1920.jpg' }
+          chosenAnimal: { id: 1, title: 'Dog', desc: 'Smart, social and high-energy animal.', colorAnimal: 'backColorGrey', url: 'https://pixabay.com/get/ea36b00920f5093ed1534705fb09459fe376e1dc10ac104497f4c07ba1e4b3b9/dog-3316818_1920.jpg' }
 
     		};
     	},  // data
     	methods: {
         recieveId: function(strId) {
 						this.chosenId = parseInt(strId);
-            //console.log("Id is recieved: " + strId);
-            //console.log("Chosen id: " + this.chosenId);
             var i;
             for (i = 0; i < this.animals.length; i++) {
                 if (this.animals[i].id == this.chosenId){
@@ -84,11 +84,31 @@ import EditChosen from './EditChosen.vue';
                 } else {
                   this.animals[i].colorAnimal = "backColorGrey";
                 }
-                console.log("Animals id: " + this.animals[i].id);
+                //console.log("Animals id: " + this.animals[i].id);
             }//end for
 				},
         showEditPage: function(event) {
   				    this.visibleChosen = false;
+  			},
+        cancelEditPage: function(event) {
+  				    this.visibleChosen = true;
+  			},
+        saveEditPage: function(nameE, urlE, descE) {
+
+              //console.log("New name: " + nameE);
+
+              if (nameE != ""){
+                this.chosenAnimal.title = nameE;
+                this.animals[this.chosenAnimal.id-1].title = nameE;
+              }
+              if (urlE != ""){
+                this.chosenAnimal.url = urlE;
+                this.animals[this.chosenAnimal.id-1].url = urlE;
+              }
+              if (descE != ""){
+                this.chosenAnimal.desc = descE;
+              }
+  				    this.visibleChosen = true;
   			}
      } //methods
   } //export default

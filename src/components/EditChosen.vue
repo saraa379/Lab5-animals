@@ -5,15 +5,15 @@
 
 			<div class="form">
             <label for="name">{{titleE}}</label>
-            <input type = "text" name="name" placeholder="Enter animal name" />
+            <input type = "text" name="name" v-model="nameAnimal"/>
             <label for="urlAnimal">Url of a picture</label>
-            <input type = "text" name="urlAnimal" placeholder="Enter url"/>
+            <input type = "text" name="urlAnimal" v-model="urlAnimal"/>
 						<label for="description">{{descE}}</label>
-						<textarea name="description" placeholder="Enter new description"></textarea>
+						<textarea name="description" v-model="descAnimal"></textarea>
 
             <div class="btns">
-                <button id="btnCancel" class="btnsEdit">Cancel</button>
-                <button id="btnSave" class="btnsEdit">Save</button>
+                <button id="btnCancel" class="btnsEdit" v-on:click="cancel">Cancel</button>
+                <button id="btnSave" class="btnsEdit" v-on:click="save">Save</button>
             </div><!--btnProfil-->
       </div>
 
@@ -22,7 +22,23 @@
 
 <script>
 	export default {
-		props: ['urlE', 'titleE', 'descE', 'idE']
+		props: ['urlE', 'titleE', 'descE', 'idE'],
+		data: function() {
+			 return {
+				 nameAnimal: "",
+				 urlAnimal: "",
+				 descAnimal: "",
+			 };
+		 },  // data
+		methods: {
+			cancel: function(event) {
+					this.$emit('cancel-edit');
+			},
+			save: function(event) {
+
+					this.$emit('save-edit', this.nameAnimal, this.urlAnimal, this.descAnimal);
+			}
+		} //methods
 	}
 </script>
 
@@ -33,13 +49,13 @@
 			width: 100%;
 			display: flex;
 			flex-flow: column wrap;
-			justify-content: center;
 			color: white;
 		}
 		img {
 			max-width: 300px;
 			height: auto;
 			margin: auto;
+			border: 2px solid white;
 		}
 		.name {
 			font-weight: bold;
@@ -51,7 +67,6 @@
 				margin-bottom: 10px;
 				margin: auto;
 				padding-top: 10px;
-				text-align: center;
 			}
 			input, textarea {
 				 outline: none;
@@ -62,6 +77,7 @@
 				 margin: 10px 0;
 				 height: 30px;
 				 border: 2px solid white;
+				 color: #585858;
 			}
 			label {
 				color: white;
