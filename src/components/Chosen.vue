@@ -42,7 +42,6 @@
 			padding-left: 10px;
 			position: relative;
 			background-color: #999999;
-			border-left: 1px solid #110c11;
 			border-right: 1px solid #110c11;
 		}
 		.name {
